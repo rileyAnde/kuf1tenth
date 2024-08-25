@@ -1,6 +1,5 @@
 import rclpy
 from math import pi
-from statistics import mean
 from rclpy.node import Node
 from ackermann_msgs.msg import AckermannDriveStamped
 from sensor_msgs.msg import LaserScan
@@ -21,6 +20,8 @@ class FtgNode(Node):
         #dead center is 540, each degree has 4 scans -- assume all measurements are in m
         target = self.safe_point(msg)
         unchecked_angle = self.point_to_steering(target)
+
+        #check the angle to make sure the car is physically able to turn that far
         if -30 <= unchecked_angle <= 30:
             steering_angle = unchecked_angle
         elif -30 > unchecked_angle:
@@ -28,6 +29,7 @@ class FtgNode(Node):
         else:
             steering_angle = 30
         
+        #safety check! if car is within .5 meters of the wall, steer away slightly to provent side collision
         if min(msg.ranges[120:220]) > 0.5 and min(msg.ranges[760:840]) > 0.5:
             pass
         elif min(msg.ranges[120:220]) <= 0.5:
@@ -35,7 +37,8 @@ class FtgNode(Node):
         elif min(msg.ranges[760:840]) <= 0.5:
             steering_angle = -3.0
         '''SPEED CALCULATION'''
-        
+
+        #really need to improve this part. Hopefully a system that integrates turning angle + distance to lookahead
         lookahead = msg.ranges[540]
         if lookahead/2 < 8:
             speed = lookahead/2
@@ -46,19 +49,44 @@ class FtgNode(Node):
     
     def safe_point(self, msg):
         car_width = .296
-        tolerance = 1.0
+        tolerance = 0.5
         laser_arr = msg.ranges
         goal_dist = max(msg.ranges)
         goal_point = laser_arr.index(goal_dist)
-        safe_steps_away = int((car_width+tolerance) // self.dbs(goal_dist) + 1)
-        self.get_logger().info(f'num scans: {safe_steps_away}')
-        try:
-            if laser_arr[goal_point-safe_steps_away] > laser_arr[goal_point+safe_steps_away]:
-                return goal_point - safe_steps_away
-            else:
-                return goal_point + safe_steps_away
-        except:
+        Lsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width/2 + tolerance)
+        Rsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width/2 + tolerance)
+        if (Lsafe_point != 0) and (Rsafe_point != 0) and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point+Rsafe_point]:
+            target = Lsafe_point
+            self.get_logger().info(f'num scans: {target}')
+            return goal_point+Lsafe_point
+        elif Rsafe_point != 0:
+            target = Rsafe_point
+            self.get_logger().info(f'num scans: {target}')
+            return goal_point+Rsafe_point
+        else:
             return 540
+        
+    def safe_point_to_right(self, ranges, index_of_furthest, width):
+        act_distance = 0
+        steps_away = 1
+        try:
+            while act_distance < width:
+                act_distance += self.dbs(ranges[index_of_furthest+steps_away])
+                steps_away += 1
+        except:
+            return None
+        return steps_away
+    
+    def safe_point_to_left(self, ranges, index_of_furthest, width):
+        act_distance = 0
+        steps_away = -1
+        try:
+            while act_distance < width:
+                act_distance += self.dbs(ranges[index_of_furthest+steps_away])
+                steps_away -= 1
+        except:
+            return None
+        return steps_away
         
     
     def deg2rad(self, deg):
