@@ -11,7 +11,7 @@ class FtgNode(Node):
     def __init__(self):
         super().__init__('ftg_node')
         self.ackermann_publisher = self.create_publisher(AckermannDriveStamped, '/drive', 10)
-        self.scan_subscription = self.create_subscription(LaserScan, 'scan', self.scan_callback, 10)
+        self.scan_subscription = self.create_subscription(LaserScan, '/autodrive/f1tenth_1/lidar', self.scan_callback, 10)
         #self.odom_subscription = self.create_subscription(Odometry, 'odom', self.odom_callback, 10)
         self.get_logger().info('FTGNode has been started.')
 

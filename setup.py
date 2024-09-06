@@ -28,7 +28,8 @@ setup(
             'brake = kuf1tenth.brake:main',
             'wall_follow = kuf1tenth.wall_follow:main',
             'old_ftg = kuf1tenth.gap:main',
-            'ftg = kuf1tenth.ftg:main'
+            'ftg = kuf1tenth.ftg:main',
+            'translate = kuf1tenth.translate:main'
         ],
     },
 )

@@ -6,13 +6,13 @@ RILEY ANDERSON
 import rclpy
 from rclpy.node import Node
 from ackermann_msgs.msg import AckermannDriveStamped
-
+from std_msgs.msg import Float32
 
 class TranslateNode(Node):
     def __init__(self):
         super().__init__('translate_node')
-        self.steering_publisher = self.create_publisher(float, '/autodrive/f1tenth_1/steering_control', 10)
-        self.throttle_publisher = self.create_publisher(float, '/autodrive/f1tenth_1/throttle_control', 10)
+        self.steering_publisher = self.create_publisher(Float32, '/autodrive/f1tenth_1/steering_command', 10)
+        self.throttle_publisher = self.create_publisher(Float32, '/autodrive/f1tenth_1/throttle_command', 10)
         self.odom_subscription = self.create_subscription(AckermannDriveStamped, 'drive', self.drive_callback, 10)
         self.get_logger().info('TranslateNode has been started.')
     
