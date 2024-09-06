@@ -1,6 +1,7 @@
 import rclpy
 from math import pi
 from rclpy.node import Node
+from statistics import mean
 from ackermann_msgs.msg import AckermannDriveStamped
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
@@ -15,6 +16,8 @@ class FtgNode(Node):
         self.get_logger().info('FTGNode has been started.')
 
     def scan_callback(self, msg):
+        car_width = .296
+        tolerance = 0.5
         '''STEERING CALCULATION'''
         #process where the farthest point is, and then the farthest safe point
         #dead center is 540, each degree has 4 scans -- assume all measurements are in m
@@ -29,22 +32,25 @@ class FtgNode(Node):
         else:
             steering_angle = 30
         
-        #safety check! if car is within .5 meters of the wall, steer away slightly to provent side collision
-        if min(msg.ranges[120:220]) > 0.5 and min(msg.ranges[760:840]) > 0.5:
+        # #safety check! if car is within .5 meters of the wall, steer away slightly to provent side collision
+        if min(msg.ranges[120:220]) > car_width+tolerance and min(msg.ranges[760:840]) > car_width+tolerance:
             pass
-        elif min(msg.ranges[120:220]) <= 0.5:
-            steering_angle = 3.0
-        elif min(msg.ranges[760:840]) <= 0.5:
-            steering_angle = -3.0
+        elif min(msg.ranges[120:220]) <= car_width+tolerance and steering_angle < 0:
+            steering_angle = 0.75
+        elif min(msg.ranges[760:840]) <= car_width+tolerance and steering_angle > 0:
+            steering_angle = -0.75
         '''SPEED CALCULATION'''
 
         #really need to improve this part. Hopefully a system that integrates turning angle + distance to lookahead
-        lookahead = msg.ranges[540]
-        if lookahead/2 < 8:
-            speed = lookahead/2
-        else:
+        # if steering_angle!=0 and mean(msg.ranges[520:560])*(0.9-steering_angle/100) < 8:
+        #     speed = mean(msg.ranges[520:560])*(0.9-steering_angle/100)
+        # else:
+        #     speed = 8
+        if msg.ranges[540]/2 >= 8:
             speed = 8
-
+        else:
+            speed = msg.ranges[540]/2
+        self.get_logger().info(f'steering angle:{speed}')
         self.publish_ackermann_drive(speed, self.deg2rad(steering_angle))
     
     def safe_point(self, msg):
@@ -53,17 +59,20 @@ class FtgNode(Node):
         laser_arr = msg.ranges
         goal_dist = max(msg.ranges)
         goal_point = laser_arr.index(goal_dist)
-        Lsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width/2 + tolerance)
+        Lsafe_point = self.safe_point_to_left(laser_arr, goal_point, car_width/2 + tolerance)
         Rsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width/2 + tolerance)
-        if (Lsafe_point != 0) and (Rsafe_point != 0) and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point+Rsafe_point]:
-            target = Lsafe_point
-            self.get_logger().info(f'num scans: {target}')
-            return goal_point+Lsafe_point
-        elif Rsafe_point != 0:
-            target = Rsafe_point
-            self.get_logger().info(f'num scans: {target}')
-            return goal_point+Rsafe_point
-        else:
+        try:
+            if (Lsafe_point != 0) and (Rsafe_point != 0) and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point+Rsafe_point]:
+                target = Lsafe_point
+                self.get_logger().info(f'num scans: {target}')
+                return goal_point+Lsafe_point
+            elif Rsafe_point != 0:
+                target = Rsafe_point
+                self.get_logger().info(f'num scans: {target}')
+                return goal_point+Rsafe_point
+            else:
+                return 540
+        except:
             return 540
         
     def safe_point_to_right(self, ranges, index_of_furthest, width):
@@ -74,7 +83,7 @@ class FtgNode(Node):
                 act_distance += self.dbs(ranges[index_of_furthest+steps_away])
                 steps_away += 1
         except:
-            return None
+            return 0
         return steps_away
     
     def safe_point_to_left(self, ranges, index_of_furthest, width):
@@ -85,7 +94,7 @@ class FtgNode(Node):
                 act_distance += self.dbs(ranges[index_of_furthest+steps_away])
                 steps_away -= 1
         except:
-            return None
+            return 0
         return steps_away
         
     
