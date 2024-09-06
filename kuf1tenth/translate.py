@@ -17,8 +17,10 @@ class TranslateNode(Node):
         self.get_logger().info('TranslateNode has been started.')
     
     def drive_callback(self, msg):
-        speed = msg.drive.speed
-        steering_angle = msg.drive.steering_angle
+        speed = Float32()
+        steering_angle = Float32()
+        speed.data = float(msg.drive.speed)
+        steering_angle.data = msg.drive.steering_angle
         self.throttle_publisher.publish(speed)
         self.steering_publisher.publish(steering_angle)
 
