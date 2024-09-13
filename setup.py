@@ -29,7 +29,8 @@ setup(
             'wall_follow = kuf1tenth.wall_follow:main',
             'old_ftg = kuf1tenth.gap:main',
             'ftg = kuf1tenth.ftg:main',
-            'translate = kuf1tenth.translate:main'
+            'translate = kuf1tenth.translate:main',
+            'tln = kuf1tenth.TLN:main'
         ],
     },
 )
