@@ -1,0 +1,84 @@
+[0.000000] (-) TimerEvent: {}
+[0.000124] (kuf1tenth) JobQueued: {'identifier': 'kuf1tenth', 'dependencies': OrderedDict()}
+[0.000749] (kuf1tenth) JobStarted: {'identifier': 'kuf1tenth'}
+[0.099789] (-) TimerEvent: {}
+[0.200000] (-) TimerEvent: {}
+[0.300245] (-) TimerEvent: {}
+[0.400458] (-) TimerEvent: {}
+[0.500732] (-) TimerEvent: {}
+[0.600975] (-) TimerEvent: {}
+[0.658234] (kuf1tenth) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', 'build/kuf1tenth', 'build', '--build-base', '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build', 'install', '--record', '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/install.log', '--install-scripts', '$base/lib/kuf1tenth', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/r478a194/sim_ws/src/kuf1tenth', 'env': {'LESSOPEN': '| /bin/lesspipe %s', 'TMUX': '/tmp/tmux-100620122/default,68406,0', 'QT_SCALE_FACTOR': '1', 'MAIL': '/var/spool/mail/r478a194', 'LANGUAGE': 'en_US', 'USER': 'r478a194', 'XDG_SEAT': 'seat0', 'XDG_SESSION_TYPE': 'x11', 'COMPIZ_CONFIG_PROFILE': 'mate', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/r478a194', 'OLDPWD': '/home/r478a194/sim_ws/src/kuf1tenth/kuf1tenth', 'TERM_PROGRAM_VERSION': '3.2a', 'DESKTOP_SESSION': 'mate', 'ROS_PYTHON_VERSION': '3', 'GTK_MODULES': 'appmenu-gtk-module:gail:atk-bridge:canberra-gtk-module:appmenu-gtk-module', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/100620122/bus', 'COLORTERM': 'truecolor', 'UBUNTU_MENUPROXY': '1', 'QT_QPA_PLATFORMTHEME': 'gtk2', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'r478a194', 'WINDOWID': '41949229', '_': '/home/r478a194/.local/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'WWW_HOME': 'http://www.ittc.ku.edu/', 'TERM': 'screen', 'GTK_OVERLAY_SCROLLING': '0', 'XDG_SESSION_ID': 'c7', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/r478a194/.local/bin:/usr/system/bin:/usr/local/bin:/bin:/usr/bin:/usr/bin/X11:/usr/X11R6/bin:/sbin:/usr/sbin:/usr/local/sbin:/tools/matlab/bin:/opt/puppetlabs/bin', 'SESSION_MANAGER': 'local/archen.ittc.ku.edu:@/tmp/.ICE-unix/63292,unix/archen.ittc.ku.edu:/tmp/.ICE-unix/63292', 'GDM_LANG': 'en_US', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session2', 'XDG_RUNTIME_DIR': '/run/user/100620122', 'DISPLAY': ':1.0', 'DOMAINNAME': '', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'MATE', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'mate', 'XAUTHORITY': '/home/r478a194/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'TERM_PROGRAM': 'tmux', 'SSH_AUTH_SOCK': '/run/user/100620122/keyring/ssh', 'XDG_GREETER_DATA_DIR': '/var/lib/lightdm-data/r478a194', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'HOST': 'archen.ittc.ku.edu', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'mate', 'LESSCLOSE': '/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/100620122/gnupg/S.gpg-agent:0:1', 'QT_IM_MODULE': 'ibus', 'XDG_VTNR': '8', 'PWD': '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-mate:/etc/xdg', 'PRINTER': 'duplex', 'CLUTTER_IM_MODULE': 'ibus', 'XDG_DATA_DIRS': '/usr/share/mate:/usr/share/mate:/usr/share/gnome:/home/r478a194/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share', 'PYTHONPATH': '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/prefix_override:/home/r478a194/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'MATE_DESKTOP_SESSION_ID': 'this-is-deprecated', 'COLCON': '1', 'MANPATH': '/usr/man:/usr/share/man:/usr/local/man:/usr/man/preformat:/usr/system/man:/usr/X11R6/man:/opt/puppetlabs/puppet/share/man', 'VTE_VERSION': '6800', 'TMUX_PANE': '%1', 'QT_FONT_DPI': '80'}, 'shell': False}
+[0.701074] (-) TimerEvent: {}
+[0.801340] (-) TimerEvent: {}
+[0.895399] (kuf1tenth) StderrLine: {'line': b"/usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead\n"}
+[0.895556] (kuf1tenth) StderrLine: {'line': b'  warnings.warn(\n'}
+[0.901449] (-) TimerEvent: {}
+[0.903994] (kuf1tenth) StdoutLine: {'line': b'running egg_info\n'}
+[0.904617] (kuf1tenth) StdoutLine: {'line': b'creating build/kuf1tenth/kuf1tenth.egg-info\n'}
+[0.904812] (kuf1tenth) StdoutLine: {'line': b'writing build/kuf1tenth/kuf1tenth.egg-info/PKG-INFO\n'}
+[0.905015] (kuf1tenth) StdoutLine: {'line': b'writing dependency_links to build/kuf1tenth/kuf1tenth.egg-info/dependency_links.txt\n'}
+[0.905200] (kuf1tenth) StdoutLine: {'line': b'writing entry points to build/kuf1tenth/kuf1tenth.egg-info/entry_points.txt\n'}
+[0.905465] (kuf1tenth) StdoutLine: {'line': b'writing requirements to build/kuf1tenth/kuf1tenth.egg-info/requires.txt\n'}
+[0.905676] (kuf1tenth) StdoutLine: {'line': b'writing top-level names to build/kuf1tenth/kuf1tenth.egg-info/top_level.txt\n'}
+[0.905751] (kuf1tenth) StdoutLine: {'line': b"writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.907057] (kuf1tenth) StdoutLine: {'line': b"reading manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.907177] (kuf1tenth) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[0.907974] (kuf1tenth) StdoutLine: {'line': b"writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.908188] (kuf1tenth) StdoutLine: {'line': b'running build\n'}
+[0.908351] (kuf1tenth) StdoutLine: {'line': b'running build_py\n'}
+[0.908577] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build\n'}
+[0.908681] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib\n'}
+[0.908747] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.908806] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/translate.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.908864] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/__init__.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.908935] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/gap.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909030] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/brake.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909225] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909422] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/TLN.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909580] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/wall_follow.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909735] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/local_ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.909926] (kuf1tenth) StdoutLine: {'line': b'running install\n'}
+[0.910266] (kuf1tenth) StdoutLine: {'line': b'running install_lib\n'}
+[0.911195] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.911379] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/translate.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.911626] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/__init__.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.911799] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/gap.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.911984] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/brake.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.912134] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.912269] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/TLN.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.912414] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/wall_follow.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.912508] (kuf1tenth) StdoutLine: {'line': b'copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/local_ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.913039] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/translate.py to translate.cpython-310.pyc\n'}
+[0.913597] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/__init__.py to __init__.cpython-310.pyc\n'}
+[0.913761] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/gap.py to gap.cpython-310.pyc\n'}
+[0.914977] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/brake.py to brake.cpython-310.pyc\n'}
+[0.915581] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/ftg.py to ftg.cpython-310.pyc\n'}
+[0.916565] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/TLN.py to TLN.cpython-310.pyc\n'}
+[0.916766] (kuf1tenth) StderrLine: {'line': b'Sorry: TabError: inconsistent use of tabs and spaces in indentation (TLN.py, line 18)\n'}
+[0.916970] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/wall_follow.py to wall_follow.cpython-310.pyc\n'}
+[0.917346] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/local_ftg.py to local_ftg.cpython-310.pyc\n'}
+[0.918216] (kuf1tenth) StdoutLine: {'line': b'running install_data\n'}
+[0.918409] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index\n'}
+[0.918626] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index\n'}
+[0.918781] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages\n'}
+[0.918857] (kuf1tenth) StdoutLine: {'line': b'copying resource/kuf1tenth -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages\n'}
+[0.918925] (kuf1tenth) StdoutLine: {'line': b'copying package.xml -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth\n'}
+[0.919068] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.919162] (kuf1tenth) StdoutLine: {'line': b'copying launch/bringup_launch.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.919223] (kuf1tenth) StdoutLine: {'line': b'copying launch/rpptest_launch.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.919381] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config\n'}
+[0.919498] (kuf1tenth) StdoutLine: {'line': b'copying config/nav2_params.yaml -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config\n'}
+[0.919723] (kuf1tenth) StdoutLine: {'line': b'creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/map\n'}
+[0.919787] (kuf1tenth) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.921706] (kuf1tenth) StdoutLine: {'line': b'Copying build/kuf1tenth/kuf1tenth.egg-info to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info\n'}
+[0.922734] (kuf1tenth) StdoutLine: {'line': b'running install_scripts\n'}
+[0.948505] (kuf1tenth) StdoutLine: {'line': b'Installing brake script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.948712] (kuf1tenth) StdoutLine: {'line': b'Installing ftg script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.948937] (kuf1tenth) StdoutLine: {'line': b'Installing old_ftg script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.949084] (kuf1tenth) StdoutLine: {'line': b'Installing tln script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.949186] (kuf1tenth) StdoutLine: {'line': b'Installing translate script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.949280] (kuf1tenth) StdoutLine: {'line': b'Installing wall_follow script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.949566] (kuf1tenth) StdoutLine: {'line': b"writing list of installed files to '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/install.log'\n"}
+[0.974722] (kuf1tenth) CommandEnded: {'returncode': 0}
+[0.983834] (kuf1tenth) JobEnded: {'identifier': 'kuf1tenth', 'rc': 0}
+[0.984495] (-) EventReactorShutdown: {}

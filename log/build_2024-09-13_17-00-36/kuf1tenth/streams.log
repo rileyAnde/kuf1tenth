@@ -1,0 +1,70 @@
+[0.660s] Invoking command in '/home/r478a194/sim_ws/src/kuf1tenth': PYTHONPATH=/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/prefix_override:/home/r478a194/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/kuf1tenth build --build-base /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build install --record /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/install.log --install-scripts $base/lib/kuf1tenth --single-version-externally-managed install_data
+[0.895s] /usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead
+[0.895s]   warnings.warn(
+[0.903s] running egg_info
+[0.904s] creating build/kuf1tenth/kuf1tenth.egg-info
+[0.904s] writing build/kuf1tenth/kuf1tenth.egg-info/PKG-INFO
+[0.904s] writing dependency_links to build/kuf1tenth/kuf1tenth.egg-info/dependency_links.txt
+[0.904s] writing entry points to build/kuf1tenth/kuf1tenth.egg-info/entry_points.txt
+[0.905s] writing requirements to build/kuf1tenth/kuf1tenth.egg-info/requires.txt
+[0.905s] writing top-level names to build/kuf1tenth/kuf1tenth.egg-info/top_level.txt
+[0.905s] writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+[0.906s] reading manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+[0.906s] adding license file 'LICENSE'
+[0.907s] writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+[0.907s] running build
+[0.908s] running build_py
+[0.908s] creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build
+[0.908s] creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib
+[0.908s] creating /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.908s] copying kuf1tenth/translate.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.908s] copying kuf1tenth/__init__.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.908s] copying kuf1tenth/gap.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.908s] copying kuf1tenth/brake.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.909s] copying kuf1tenth/ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.909s] copying kuf1tenth/TLN.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.909s] copying kuf1tenth/wall_follow.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.909s] copying kuf1tenth/local_ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.909s] running install
+[0.909s] running install_lib
+[0.910s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.911s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/translate.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.911s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/__init__.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.911s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/gap.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.911s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/brake.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.911s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.912s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/TLN.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.912s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/wall_follow.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.912s] copying /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/local_ftg.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.912s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/translate.py to translate.cpython-310.pyc
+[0.913s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/__init__.py to __init__.cpython-310.pyc
+[0.913s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/gap.py to gap.cpython-310.pyc
+[0.914s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/brake.py to brake.cpython-310.pyc
+[0.915s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/ftg.py to ftg.cpython-310.pyc
+[0.916s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/TLN.py to TLN.cpython-310.pyc
+[0.916s] Sorry: TabError: inconsistent use of tabs and spaces in indentation (TLN.py, line 18)
+[0.916s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/wall_follow.py to wall_follow.cpython-310.pyc
+[0.917s] byte-compiling /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/local_ftg.py to local_ftg.cpython-310.pyc
+[0.918s] running install_data
+[0.918s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index
+[0.918s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index
+[0.918s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages
+[0.918s] copying resource/kuf1tenth -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages
+[0.918s] copying package.xml -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth
+[0.918s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch
+[0.918s] copying launch/bringup_launch.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch
+[0.918s] copying launch/rpptest_launch.py -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch
+[0.919s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config
+[0.919s] copying config/nav2_params.yaml -> /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config
+[0.919s] creating /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/share/kuf1tenth/map
+[0.919s] running install_egg_info
+[0.921s] Copying build/kuf1tenth/kuf1tenth.egg-info to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info
+[0.922s] running install_scripts
+[0.948s] Installing brake script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.948s] Installing ftg script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.948s] Installing old_ftg script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.948s] Installing tln script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.948s] Installing translate script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.949s] Installing wall_follow script to /home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.949s] writing list of installed files to '/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/install.log'
+[0.974s] Invoked command in '/home/r478a194/sim_ws/src/kuf1tenth' returned '0': PYTHONPATH=/home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/prefix_override:/home/r478a194/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/r478a194/sim_ws/src/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/kuf1tenth build --build-base /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/build install --record /home/r478a194/sim_ws/src/kuf1tenth/build/kuf1tenth/install.log --install-scripts $base/lib/kuf1tenth --single-version-externally-managed install_data
