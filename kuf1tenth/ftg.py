@@ -6,119 +6,151 @@ from ackermann_msgs.msg import AckermannDriveStamped
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from std_msgs.msg import Header
+from collections import deque
 
 class FtgNode(Node):
     def __init__(self):
         super().__init__('ftg_node')
         self.ackermann_publisher = self.create_publisher(AckermannDriveStamped, '/drive', 10)
         self.scan_subscription = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
-        #self.odom_subscription = self.create_subscription(Odometry, 'odom', self.odom_callback, 10)
+        self.odom_subscription = self.create_subscription(Odometry, '/ego_racecar/odom', self.odom_callback, 10)
         self.get_logger().info('FTGNode has been started.')
         self.scan = []
-        self.window_size = 1
+        self.window_size = 10
+        # Initialize a deque with a maximum length of 20 to store speed values
+        self.speed_queue = deque(maxlen=10)
+        
+        # Lap counter variables
+        self.lap_count = 0
+        self.start_finish_line_x = 0.0  # Define the x-coordinate of the start/finish line
+        self.previous_x_position = None  # To track the previous position of the car
+        self.crossed_line = False  # To track whether the car has crossed the line
+
+        self.position = None
+        self.orientation = None
 
     def scan_callback(self, msg):
         car_width = .296
         tolerance = 0.5
         '''STEERING CALCULATION'''
-        #process where the farthest point is, and then the farthest safe point
-        #dead center is 540, each degree has 4 scans -- assume all measurements are in m
         self.scan = msg.ranges
-        if(self.detect_crash()):
-            self.get_logger().info("Crash")
-            quit()
+
         target = self.safe_point(msg)
         unchecked_angle = self.point_to_steering(target)
 
-        #check the angle to make sure the car is physically able to turn that far
+        # Check the angle to make sure the car is physically able to turn that far
         if -30 <= unchecked_angle <= 30:
             steering_angle = unchecked_angle
-        elif -30 > unchecked_angle:
+        elif unchecked_angle < -30:
             steering_angle = -30
         else:
             steering_angle = 30
         
-        # #safety check! if car is within .5 meters of the wall, steer away slightly to provent side collision
-        if min(msg.ranges[120:220]) > car_width+tolerance and min(msg.ranges[760:840]) > car_width+tolerance:
+        # Safety check for walls
+        if min(msg.ranges[120:220]) > car_width + tolerance and min(msg.ranges[760:840]) > car_width + tolerance:
             pass
-        elif min(msg.ranges[120:220]) <= car_width+tolerance and steering_angle < 0:
+        elif min(msg.ranges[120:220]) <= car_width + tolerance and steering_angle < 0:
             steering_angle = 0.75
-        elif min(msg.ranges[760:840]) <= car_width+tolerance and steering_angle > 0:
+        elif min(msg.ranges[760:840]) <= car_width + tolerance and steering_angle > 0:
             steering_angle = -0.75
-        '''SPEED CALCULATION'''
 
-        #really need to improve this part. Hopefully a system that integrates turning angle + distance to lookahead
-        # if steering_angle!=0 and mean(msg.ranges[520:560])*(0.9-steering_angle/100) < 8:
-        #     speed = mean(msg.ranges[520:560])*(0.9-steering_angle/100)
-        # else:
-        #     speed = 8
-        if msg.ranges[540]/2 >= 8:
+        # Speed calculation
+        if msg.ranges[540] / 2 >= 8:
             speed = 8
         else:
-            speed = msg.ranges[540]/2
-        self.get_logger().info(f'steering angle:{speed}')
+            speed = msg.ranges[540] / 2
+        
+        self.speed_queue.append(speed)
+
+        if self.detect_crash():
+            self.get_logger().info("Crash")
+            self.destroy_node()
+            rclpy.shutdown()
+        
         self.publish_ackermann_drive(speed, self.deg2rad(steering_angle))
-    
+
+    def odom_callback(self, msg):
+        # Extract position and orientation from the Odometry message
+        self.position = msg.pose.pose.position
+        self.orientation = msg.pose.pose.orientation
+
+        # Check if the car has crossed the start/finish line
+        self.check_lap(self.position)
+
+        #self.get_logger().info(f'Odometry received: position={self.position}, orientation={self.orientation}')
+
+    def check_lap(self, current_position):
+        # Check if we have a previous position to compare
+        if self.previous_x_position is None:
+            self.previous_x_position = current_position.x
+            return
+        # Check if the car crossed the start/finish line going forward
+        if self.previous_x_position < self.start_finish_line_x <= current_position.x:
+            if not self.crossed_line:
+                self.lap_count += 1
+                self.crossed_line = True
+        
+        self.get_logger().info(f'Lap {self.lap_count} completed!')
+        
+        # Reset the line crossing flag if the car moves away from the line
+        if current_position.x < self.start_finish_line_x:
+            self.crossed_line = False
+
+        # Update previous x position for the next callback
+        self.previous_x_position = current_position.x
+
     def safe_point(self, msg):
         car_width = .296
         tolerance = 0.5
         laser_arr = msg.ranges
         goal_dist = max(msg.ranges)
         goal_point = laser_arr.index(goal_dist)
-        Lsafe_point = self.safe_point_to_left(laser_arr, goal_point, car_width/2 + tolerance)
-        Rsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width/2 + tolerance)
+        Lsafe_point = self.safe_point_to_left(laser_arr, goal_point, car_width / 2 + tolerance)
+        Rsafe_point = self.safe_point_to_right(laser_arr, goal_point, car_width / 2 + tolerance)
+
         try:
-            if (Lsafe_point != 0) and (Rsafe_point != 0) and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point+Rsafe_point]:
-                target = Lsafe_point
-                #self.get_logger().info(f'num scans: {target}')
-                return goal_point+Lsafe_point
+            if Lsafe_point != 0 and Rsafe_point != 0 and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point + Rsafe_point]:
+                return goal_point + Lsafe_point
             elif Rsafe_point != 0:
-                target = Rsafe_point
-                #self.get_logger().info(f'num scans: {target}')
-                return goal_point+Rsafe_point
+                return goal_point + Rsafe_point
             else:
                 return 540
         except:
             return 540
-        
+
     def safe_point_to_right(self, ranges, index_of_furthest, width):
         act_distance = 0
         steps_away = 1
         try:
             while act_distance < width:
-                act_distance += self.dbs(ranges[index_of_furthest+steps_away])
+                act_distance += self.dbs(ranges[index_of_furthest + steps_away])
                 steps_away += 1
         except:
             return 0
         return steps_away
-    
+
     def safe_point_to_left(self, ranges, index_of_furthest, width):
         act_distance = 0
         steps_away = -1
         try:
             while act_distance < width:
-                act_distance += self.dbs(ranges[index_of_furthest+steps_away])
+                act_distance += self.dbs(ranges[index_of_furthest + steps_away])
                 steps_away -= 1
         except:
             return 0
         return steps_away
-        
-    
+
     def deg2rad(self, deg):
-        return (deg*pi)/180    
-    
+        return (deg * pi) / 180
+
     def point_to_steering(self, target):
-        #self.get_logger().info(f'Target: {target}')
         if target == 540:
             return 0
         else:
-            return (target-540)/4
-
+            return (target - 540) / 4
 
     def dbs(self, dist):
-        #calc distance between scans
-        return (pi*dist)/540
-
+        return (pi * dist) / 540
 
     def publish_ackermann_drive(self, speed, steering_angle):
         ackermann_msg = AckermannDriveStamped()
@@ -128,15 +160,16 @@ class FtgNode(Node):
         ackermann_msg.drive.steering_angle = float(steering_angle)
 
         self.ackermann_publisher.publish(ackermann_msg)
-        self.get_logger().info(f'Published AckermannDriveStamped message: speed={speed}, steering_angle={steering_angle}')
+        #self.get_logger().info(f'Published AckermannDriveStamped message: speed={speed}, steering_angle={steering_angle}')
 
     def detect_crash(self):
         for i in range(len(self.scan) - self.window_size + 1):
-            # Extract a sliding window of size 'window_size' from 'self.scan'
             window = self.scan[i:i + self.window_size]
-            # Check if all elements in the current window are less than or equal to 0
-            if all(val <= 0 for val in window):
+            if all(val <= 0.2 for val in window):
                 return True
+
+        if len(self.speed_queue) == self.speed_queue.maxlen and all(speed < 0.05 for speed in self.speed_queue):
+            return True
         return False
 
 def main(args=None):
