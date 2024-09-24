@@ -14,6 +14,8 @@ class FtgNode(Node):
         self.scan_subscription = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
         #self.odom_subscription = self.create_subscription(Odometry, 'odom', self.odom_callback, 10)
         self.get_logger().info('FTGNode has been started.')
+        self.scan = []
+        self.window_size = 1
 
     def scan_callback(self, msg):
         car_width = .296
@@ -21,6 +23,10 @@ class FtgNode(Node):
         '''STEERING CALCULATION'''
         #process where the farthest point is, and then the farthest safe point
         #dead center is 540, each degree has 4 scans -- assume all measurements are in m
+        self.scan = msg.ranges
+        if(self.detect_crash()):
+            self.get_logger().info("Crash")
+            quit()
         target = self.safe_point(msg)
         unchecked_angle = self.point_to_steering(target)
 
@@ -64,11 +70,11 @@ class FtgNode(Node):
         try:
             if (Lsafe_point != 0) and (Rsafe_point != 0) and laser_arr[goal_point + Lsafe_point] >= laser_arr[goal_point+Rsafe_point]:
                 target = Lsafe_point
-                self.get_logger().info(f'num scans: {target}')
+                #self.get_logger().info(f'num scans: {target}')
                 return goal_point+Lsafe_point
             elif Rsafe_point != 0:
                 target = Rsafe_point
-                self.get_logger().info(f'num scans: {target}')
+                #self.get_logger().info(f'num scans: {target}')
                 return goal_point+Rsafe_point
             else:
                 return 540
@@ -123,6 +129,15 @@ class FtgNode(Node):
 
         self.ackermann_publisher.publish(ackermann_msg)
         self.get_logger().info(f'Published AckermannDriveStamped message: speed={speed}, steering_angle={steering_angle}')
+
+    def detect_crash(self):
+        for i in range(len(self.scan) - self.window_size + 1):
+            # Extract a sliding window of size 'window_size' from 'self.scan'
+            window = self.scan[i:i + self.window_size]
+            # Check if all elements in the current window are less than or equal to 0
+            if all(val <= 0 for val in window):
+                return True
+        return False
 
 def main(args=None):
     rclpy.init(args=args)
