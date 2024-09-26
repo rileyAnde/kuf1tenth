@@ -7,6 +7,8 @@ from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from std_msgs.msg import Header
 from collections import deque
+import time
+
 
 class FtgNode(Node):
     def __init__(self):
@@ -22,6 +24,8 @@ class FtgNode(Node):
         
         # Lap counter variables
         self.lap_count = 0
+        self.lap_time = time.time()
+
         self.start_finish_line_x = 0.0  # Define the x-coordinate of the start/finish line
         self.previous_x_position = None  # To track the previous position of the car
         self.crossed_line = False  # To track whether the car has crossed the line
@@ -64,8 +68,10 @@ class FtgNode(Node):
 
         if self.detect_crash():
             self.get_logger().info("Crash")
+            self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
             self.destroy_node()
             rclpy.shutdown()
+            quit()
         
         self.publish_ackermann_drive(speed, self.deg2rad(steering_angle))
 
@@ -91,13 +97,18 @@ class FtgNode(Node):
                 self.crossed_line = True
         
         self.get_logger().info(f'Lap {self.lap_count} completed!')
-        
+
         # Reset the line crossing flag if the car moves away from the line
         if current_position.x < self.start_finish_line_x:
             self.crossed_line = False
 
         # Update previous x position for the next callback
         self.previous_x_position = current_position.x
+        
+        if self.lap_count == 1:
+            self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
+            self.destroy_node()
+            quit()
 
     def safe_point(self, msg):
         car_width = .296
@@ -175,10 +186,12 @@ class FtgNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = FtgNode()
+    lap_time = time.time()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
         node.get_logger().info('Keyboard Interrupt (SIGINT)')
+        node.get_logger().info(f"Lap time: {time.time() - lap_time}")
     finally:
         node.destroy_node()
         rclpy.shutdown()
