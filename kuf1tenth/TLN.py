@@ -5,7 +5,7 @@ import tensorflow as tf
 from rclpy.node import Node
 from ackermann_msgs.msg import AckermannDriveStamped
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import Header
+from std_msgs.msg import Header, Float32
 from collections import deque
 from nav_msgs.msg import Odometry
 import time
@@ -15,11 +15,17 @@ class TLNNode(Node):
     def __init__(self):
         super().__init__('tln_node')
         self.ackermann_publisher = self.create_publisher(AckermannDriveStamped, '/drive', 10)
-        self.scan_subscription = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
+        self.scan_subscription = self.create_subscription(LaserScan, '/autodrive/f1tenth_1/lidar', self.scan_callback, 10)
         self.odom_subscription = self.create_subscription(Odometry, '/ego_racecar/odom', self.odom_callback, 10)
+        
+        
+        self.steering_publisher = self.create_publisher(Float32, '/autodrive/f1tenth_1/steering_command', 10)
+        self.throttle_publisher = self.create_publisher(Float32, '/autodrive/f1tenth_1/throttle_command', 10)
+        
+        
         self.get_logger().info('TLNNode has been started.')
 
-        self.model_path = "/home/r478a194/Downloads/f1_tenth_model_small_noquantized.tflite"
+        self.model_path = "/home/autodrive_devkit/src/kuf1tenth/kuf1tenth/models/f1_tenth_model_small_noquantized.tflite"
         self.interpreter = tf.lite.Interpreter(model_path=self.model_path)
         self.interpreter.allocate_tensors()
         self.input_index = self.interpreter.get_input_details()[0]["index"]
@@ -47,12 +53,15 @@ class TLNNode(Node):
         return (x - x_min) / (x_max - x_min) * (y_max - y_min) + y_min    
 
     def scan_callback(self, msg):
+        self.get_logger().info(f"Scan len: {len(msg.ranges)}")
         scans = np.array(msg.ranges)
-        scans = np.append(scans, [20])
-        self.get_logger().info(f'num scans:{len(scans)}')
-        noise = np.random.normal(0, 0.5, scans.shape)
-        scans = scans + noise
-        scans[scans > 10] = 10
+        max_lookup_distance = 20
+        #scans = np.append(scans, [20])
+        # self.get_logger().info(f'num scans:{len(scans)}')
+        #noise = np.random.normal(0, 0.5, scans.shape)
+        #scans = scans + noise
+        #scans[scans > 3] = 3
+        self.get_logger().info(f'Scan Distance > {max_lookup_distance}:{np.any(scans > max_lookup_distance)}')
         scans = scans[::2]  # Use every other value
         scans = np.expand_dims(scans, axis=-1).astype(np.float32)
         scans = np.expand_dims(scans, axis=0)
@@ -67,18 +76,27 @@ class TLNNode(Node):
         steer = output[0, 0]
         speed = output[0, 1]
 
-        min_speed = 0
-        max_speed = 8
+        min_speed = 0.01
+        max_speed = 0.25
         speed = self.linear_map(speed, 0, 1, min_speed, max_speed)
-        
+        # steer = self.linear_map(steer, -0.5, 0.5, -0.6, 0.6)
+        if steer < 0:
+            steer = steer*2.2
+        elif steer >0:
+            steer = steer*2.2
+
         self.speed_queue.append(speed)
 
-        if self.detect_crash():
-            self.get_logger().info("Crash")
-            self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
-            self.destroy_node()
-            rclpy.shutdown()
-            quit()
+        # if self.detect_crash():
+        #     self.get_logger().info("Crash")
+        #     self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
+        #     self.destroy_node()
+        #     rclpy.shutdown()
+        #     quit()
+        if speed == None:
+            speed = 0
+            steer = 0
+            self.get_logger().info(f'------------------>>> Getting NANAs')
         self.publish_ackermann_drive(speed, steer)
 
     def publish_ackermann_drive(self, speed, steering_angle):
@@ -87,6 +105,20 @@ class TLNNode(Node):
         ackermann_msg.header.stamp = self.get_clock().now().to_msg()
         ackermann_msg.drive.speed = float(speed)
         ackermann_msg.drive.steering_angle = float(steering_angle)
+        
+        # Create and populate the Float32 message for speed
+        speed_msg = Float32()
+        speed_msg.data = float(speed)
+        self.throttle_publisher.publish(speed_msg)
+        
+        # Create and populate the Float32 message for steering angle
+        steering_msg = Float32()
+        steering_msg.data = float(steering_angle)
+
+        self.steering_publisher.publish(steering_msg)
+        self.throttle_publisher.publish(speed_msg)
+        self.get_logger().info(f'Published msg message: speed_msg={speed_msg}, steering_msg={steering_msg}')
+
 
         self.ackermann_publisher.publish(ackermann_msg)
         self.get_logger().info(f'Published AckermannDriveStamped message: speed={speed}, steering_angle={steering_angle}')
