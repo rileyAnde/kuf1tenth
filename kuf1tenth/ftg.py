@@ -12,7 +12,7 @@ class FtgNode(Node):
     def __init__(self):
         super().__init__('ftg_node')
         self.ackermann_publisher = self.create_publisher(AckermannDriveStamped, '/drive', 10)
-        self.scan_subscription = self.create_subscription(LaserScan, '/autodrive/f1tenth_1/lidar', self.scan_callback, 10)
+        self.scan_subscription = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
         #self.odom_subscription = self.create_subscription(Odometry, 'odom', self.odom_callback, 10)
         self.get_logger().info('Jackson FTGNode has been started.')
 
@@ -21,20 +21,21 @@ class FtgNode(Node):
         self.tolerance = 0.5
 
         #adapted parameters from BDEvan5 f1tenth benchmarks FTG implementation
-        self.bubble_radius: 160
-        self.preprocess_conv_size: 3
-        self.best_point_conv_size: 80
-        self.max_lidar_dist: 10.0
-        self.fast_speed: 5
-        self.straights_speed: 5.0
-        self.corners_speed: 3.0
-        self.straights_steering_angle: 0.174
-        self.fast_steering_angle: 0.0785
-        self.safe_threshold: 5
-        self.max_steer: 0.4
+        self.bubble_radius = 320
+        self.preprocess_conv_size = 3
+        self.best_point_conv_size = 80
+        self.max_lidar_dist = 10.0
+        self.fast_speed = 6.5
+        self.straights_speed = 5.0
+        self.corners_speed = 1.5
+        self.straights_steering_angle = 0.174
+        self.fast_steering_angle = 0.0785
+        self.safe_threshold = 5
+        self.max_steer = 0.52
 
 
     def scan_callback(self, msg):
+        self.get_logger().info(f'Scan received {len(msg.ranges)}')
         proc_ranges = self.preprocess_lidar(msg.ranges)
         
         closest = np.argmin(proc_ranges)
@@ -130,7 +131,7 @@ class FtgNode(Node):
         for sl in slices[::-1]:
             # print(sl)
             sl_len = sl.stop - sl.start
-            if sl_len > self.planner_params.safe_threshold:
+            if sl_len > self.safe_threshold:
                 chosen_slice = sl
                 # print("Slice choosen")
                 return chosen_slice.start, chosen_slice.stop
@@ -142,8 +143,8 @@ class FtgNode(Node):
         """
         # do a sliding window average over the data in the max gap, this will
         # help the car to avoid hitting corners
-        averaged_max_gap = np.convolve(ranges[start_i:end_i], np.ones(self.planner_params.best_point_conv_size),
-                                       'same') / self.planner_params.best_point_conv_size
+        averaged_max_gap = np.convolve(ranges[start_i:end_i], np.ones(self.best_point_conv_size),
+                                       'same') / self.best_point_conv_size
         return averaged_max_gap.argmax() + start_i
 
     def get_angle(self, range_index, range_len):
@@ -151,7 +152,7 @@ class FtgNode(Node):
         """
         lidar_angle = (range_index - (range_len / 2)) * self.radians_per_elem
         steering_angle = lidar_angle / 2
-        steering_angle = np.clip(steering_angle, -self.planner_params.max_steer, self.planner_params.max_steer)
+        steering_angle = np.clip(steering_angle, -self.max_steer, self.max_steer)
         return steering_angle
     
         
