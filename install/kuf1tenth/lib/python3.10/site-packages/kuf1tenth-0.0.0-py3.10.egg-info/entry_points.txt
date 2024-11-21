@@ -1,0 +1,7 @@
+[console_scripts]
+brake = kuf1tenth.brake:main
+ftg = kuf1tenth.ftg:main
+old_ftg = kuf1tenth.gap:main
+translate = kuf1tenth.translate:main
+wall_follow = kuf1tenth.wall_follow:main
+

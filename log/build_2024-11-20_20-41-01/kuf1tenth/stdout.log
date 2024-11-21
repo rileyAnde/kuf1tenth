@@ -1,0 +1,27 @@
+running egg_info
+writing build/kuf1tenth/kuf1tenth.egg-info/PKG-INFO
+writing dependency_links to build/kuf1tenth/kuf1tenth.egg-info/dependency_links.txt
+writing entry points to build/kuf1tenth/kuf1tenth.egg-info/entry_points.txt
+writing requirements to build/kuf1tenth/kuf1tenth.egg-info/requires.txt
+writing top-level names to build/kuf1tenth/kuf1tenth.egg-info/top_level.txt
+reading manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+running build
+running build_py
+copying kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+running install
+running install_lib
+copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/ftg.py to ftg.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info' (and everything under it)
+Copying build/kuf1tenth/kuf1tenth.egg-info to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info
+running install_scripts
+Installing brake script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+Installing ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+Installing old_ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+Installing translate script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+Installing wall_follow script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+writing list of installed files to '/home/j985y238/kuf1tenth/build/kuf1tenth/install.log'

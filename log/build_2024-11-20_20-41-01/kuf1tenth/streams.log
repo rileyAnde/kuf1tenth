@@ -1,0 +1,31 @@
+[0.511s] Invoking command in '/home/j985y238/kuf1tenth': PYTHONPATH=/home/j985y238/kuf1tenth/build/kuf1tenth/prefix_override:/home/j985y238/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/kuf1tenth build --build-base /home/j985y238/kuf1tenth/build/kuf1tenth/build install --record /home/j985y238/kuf1tenth/build/kuf1tenth/install.log --install-scripts $base/lib/kuf1tenth --single-version-externally-managed install_data
+[0.695s] /usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead
+[0.695s]   warnings.warn(
+[0.703s] running egg_info
+[0.703s] writing build/kuf1tenth/kuf1tenth.egg-info/PKG-INFO
+[0.704s] writing dependency_links to build/kuf1tenth/kuf1tenth.egg-info/dependency_links.txt
+[0.704s] writing entry points to build/kuf1tenth/kuf1tenth.egg-info/entry_points.txt
+[0.704s] writing requirements to build/kuf1tenth/kuf1tenth.egg-info/requires.txt
+[0.704s] writing top-level names to build/kuf1tenth/kuf1tenth.egg-info/top_level.txt
+[0.706s] reading manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+[0.706s] adding license file 'LICENSE'
+[0.707s] writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'
+[0.707s] running build
+[0.707s] running build_py
+[0.708s] copying kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth
+[0.708s] running install
+[0.709s] running install_lib
+[0.709s] copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth
+[0.710s] byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/ftg.py to ftg.cpython-310.pyc
+[0.711s] running install_data
+[0.712s] running install_egg_info
+[0.713s] removing '/home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info' (and everything under it)
+[0.714s] Copying build/kuf1tenth/kuf1tenth.egg-info to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info
+[0.714s] running install_scripts
+[0.734s] Installing brake script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.734s] Installing ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.734s] Installing old_ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.735s] Installing translate script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.735s] Installing wall_follow script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth
+[0.735s] writing list of installed files to '/home/j985y238/kuf1tenth/build/kuf1tenth/install.log'
+[0.753s] Invoked command in '/home/j985y238/kuf1tenth' returned '0': PYTHONPATH=/home/j985y238/kuf1tenth/build/kuf1tenth/prefix_override:/home/j985y238/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base build/kuf1tenth build --build-base /home/j985y238/kuf1tenth/build/kuf1tenth/build install --record /home/j985y238/kuf1tenth/build/kuf1tenth/install.log --install-scripts $base/lib/kuf1tenth --single-version-externally-managed install_data

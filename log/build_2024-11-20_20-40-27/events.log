@@ -1,0 +1,79 @@
+[0.000000] (-) TimerEvent: {}
+[0.000215] (kuf1tenth) JobQueued: {'identifier': 'kuf1tenth', 'dependencies': OrderedDict()}
+[0.000271] (kuf1tenth) JobStarted: {'identifier': 'kuf1tenth'}
+[0.099461] (-) TimerEvent: {}
+[0.199717] (-) TimerEvent: {}
+[0.299992] (-) TimerEvent: {}
+[0.400253] (-) TimerEvent: {}
+[0.500489] (-) TimerEvent: {}
+[0.600735] (-) TimerEvent: {}
+[0.603409] (kuf1tenth) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', 'build/kuf1tenth', 'build', '--build-base', '/home/j985y238/kuf1tenth/build/kuf1tenth/build', 'install', '--record', '/home/j985y238/kuf1tenth/build/kuf1tenth/install.log', '--install-scripts', '$base/lib/kuf1tenth', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/j985y238/kuf1tenth', 'env': {'LESSOPEN': '| /bin/lesspipe %s', 'QT_SCALE_FACTOR': '1', 'MAIL': '/var/spool/mail/j985y238', 'LANGUAGE': 'en_US', 'USER': 'j985y238', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'COMPIZ_CONFIG_PROFILE': 'mate', 'SHLVL': '1', 'HOME': '/home/j985y238', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'TERM_PROGRAM_VERSION': '1.92.2', 'DESKTOP_SESSION': 'mate', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/code.desktop', 'GTK_MODULES': 'appmenu-gtk-module:gail:atk-bridge:canberra-gtk-module:appmenu-gtk-module', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'VSCODE_GIT_ASKPASS_MAIN': '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/usr/share/code/code', 'MANAGERPID': '1852', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '1869', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/100620018/bus,guid=0b9f335a386db8e64c121045673e9019', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '2875', 'UBUNTU_MENUPROXY': '1', 'QT_QPA_PLATFORMTHEME': 'gtk2', 'IM_CONFIG_PHASE': '1', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'j985y238', 'JOURNAL_STREAM': '8:23371', '_': '/home/j985y238/.local/bin/colcon', 'XDG_SESSION_CLASS': 'user', 'WWW_HOME': 'http://www.ittc.ku.edu/', 'TERM': 'xterm-256color', 'GTK_OVERLAY_SCROLLING': '0', 'PATH': '/home/j985y238/.local/bin:/usr/system/bin:/usr/local/bin:/bin:/usr/bin:/usr/bin/X11:/usr/X11R6/bin:/sbin:/usr/sbin:/usr/local/sbin:/tools/matlab/bin:/opt/puppetlabs/bin:/home/j985y238/.local/bin:/home/j985y238/.local/bin', 'SESSION_MANAGER': 'local/archen.ittc.ku.edu:@/tmp/.ICE-unix/1870,unix/archen.ittc.ku.edu:/tmp/.ICE-unix/1870', 'GDM_LANG': 'en_US', 'INVOCATION_ID': '08358b20fef94d3ca130d1bf50fe0b94', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session0', 'XDG_RUNTIME_DIR': '/run/user/100620018', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'DOMAINNAME': '', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'MATE', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'mate', 'XAUTHORITY': '/home/j985y238/.Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/100620018/vscode-git-d83d9952a3.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/100620018/keyring/ssh', 'XDG_GREETER_DATA_DIR': '/var/lib/lightdm-data/j985y238', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'MATE', 'SHELL': '/bin/bash', 'HOST': 'archen.ittc.ku.edu', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'mate', 'LESSCLOSE': '/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/100620018/gnupg/S.gpg-agent:0:1', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/j985y238/kuf1tenth/build/kuf1tenth', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-mate:/etc/xdg', 'PRINTER': 'duplex', 'CLUTTER_IM_MODULE': 'ibus', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/100620018/bus,guid=0b9f335a386db8e64c121045673e9019', 'XDG_DATA_DIRS': '/usr/share/mate:/usr/share/mate:/usr/share/gnome:/home/j985y238/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'MATE_DESKTOP_SESSION_ID': 'this-is-deprecated', 'COLCON': '1', 'MANPATH': '/usr/man:/usr/share/man:/usr/local/man:/usr/man/preformat:/usr/system/man:/usr/X11R6/man:/opt/puppetlabs/puppet/share/man', 'QT_FONT_DPI': '80', 'PYTHONPATH': '/home/j985y238/kuf1tenth/build/kuf1tenth/prefix_override:/home/j985y238/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages:'}, 'shell': False}
+[0.700844] (-) TimerEvent: {}
+[0.784715] (kuf1tenth) StderrLine: {'line': b"/usr/lib/python3/dist-packages/setuptools/dist.py:723: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead\n"}
+[0.784862] (kuf1tenth) StderrLine: {'line': b'  warnings.warn(\n'}
+[0.791945] (kuf1tenth) StdoutLine: {'line': b'running egg_info\n'}
+[0.792398] (kuf1tenth) StdoutLine: {'line': b'creating build/kuf1tenth/kuf1tenth.egg-info\n'}
+[0.792580] (kuf1tenth) StdoutLine: {'line': b'writing build/kuf1tenth/kuf1tenth.egg-info/PKG-INFO\n'}
+[0.792747] (kuf1tenth) StdoutLine: {'line': b'writing dependency_links to build/kuf1tenth/kuf1tenth.egg-info/dependency_links.txt\n'}
+[0.792910] (kuf1tenth) StdoutLine: {'line': b'writing entry points to build/kuf1tenth/kuf1tenth.egg-info/entry_points.txt\n'}
+[0.793110] (kuf1tenth) StdoutLine: {'line': b'writing requirements to build/kuf1tenth/kuf1tenth.egg-info/requires.txt\n'}
+[0.793206] (kuf1tenth) StdoutLine: {'line': b'writing top-level names to build/kuf1tenth/kuf1tenth.egg-info/top_level.txt\n'}
+[0.793422] (kuf1tenth) StdoutLine: {'line': b"writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.795206] (kuf1tenth) StdoutLine: {'line': b"reading manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.795397] (kuf1tenth) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[0.795953] (kuf1tenth) StdoutLine: {'line': b"writing manifest file 'build/kuf1tenth/kuf1tenth.egg-info/SOURCES.txt'\n"}
+[0.796209] (kuf1tenth) StdoutLine: {'line': b'running build\n'}
+[0.796380] (kuf1tenth) StdoutLine: {'line': b'running build_py\n'}
+[0.796644] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/build/kuf1tenth/build\n'}
+[0.796729] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib\n'}
+[0.796807] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.796883] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/translate.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.796989] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/__init__.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797110] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/gap.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797165] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/brake.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797272] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797446] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/wall_follow.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797577] (kuf1tenth) StdoutLine: {'line': b'copying kuf1tenth/local_ftg.py -> /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth\n'}
+[0.797799] (kuf1tenth) StdoutLine: {'line': b'running install\n'}
+[0.798096] (kuf1tenth) StdoutLine: {'line': b'running install_lib\n'}
+[0.798741] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.798894] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/translate.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799095] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/__init__.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799245] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/gap.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799343] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/brake.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799438] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/ftg.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799570] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/wall_follow.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.799707] (kuf1tenth) StdoutLine: {'line': b'copying /home/j985y238/kuf1tenth/build/kuf1tenth/build/lib/kuf1tenth/local_ftg.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth\n'}
+[0.800253] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/translate.py to translate.cpython-310.pyc\n'}
+[0.800715] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/__init__.py to __init__.cpython-310.pyc\n'}
+[0.800885] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/gap.py to gap.cpython-310.pyc\n'}
+[0.800940] (-) TimerEvent: {}
+[0.801917] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/brake.py to brake.cpython-310.pyc\n'}
+[0.802333] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/ftg.py to ftg.cpython-310.pyc\n'}
+[0.802727] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/wall_follow.py to wall_follow.cpython-310.pyc\n'}
+[0.802813] (kuf1tenth) StderrLine: {'line': b'Sorry: IndentationError: unindent does not match any outer indentation level (ftg.py, line 117)\n'}
+[0.803187] (kuf1tenth) StdoutLine: {'line': b'byte-compiling /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth/local_ftg.py to local_ftg.cpython-310.pyc\n'}
+[0.803913] (kuf1tenth) StdoutLine: {'line': b'running install_data\n'}
+[0.804217] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/ament_index\n'}
+[0.804497] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index\n'}
+[0.804568] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages\n'}
+[0.804656] (kuf1tenth) StdoutLine: {'line': b'copying resource/kuf1tenth -> /home/j985y238/kuf1tenth/install/kuf1tenth/share/ament_index/resource_index/packages\n'}
+[0.804857] (kuf1tenth) StdoutLine: {'line': b'copying package.xml -> /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth\n'}
+[0.804927] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.805061] (kuf1tenth) StdoutLine: {'line': b'copying launch/bringup_launch.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.805144] (kuf1tenth) StdoutLine: {'line': b'copying launch/rpptest_launch.py -> /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/launch\n'}
+[0.805249] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config\n'}
+[0.805400] (kuf1tenth) StdoutLine: {'line': b'copying config/nav2_params.yaml -> /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/config\n'}
+[0.805639] (kuf1tenth) StdoutLine: {'line': b'creating /home/j985y238/kuf1tenth/install/kuf1tenth/share/kuf1tenth/map\n'}
+[0.805740] (kuf1tenth) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.807742] (kuf1tenth) StdoutLine: {'line': b'Copying build/kuf1tenth/kuf1tenth.egg-info to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/python3.10/site-packages/kuf1tenth-0.0.0-py3.10.egg-info\n'}
+[0.808908] (kuf1tenth) StdoutLine: {'line': b'running install_scripts\n'}
+[0.827138] (kuf1tenth) StdoutLine: {'line': b'Installing brake script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.827485] (kuf1tenth) StdoutLine: {'line': b'Installing ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.827619] (kuf1tenth) StdoutLine: {'line': b'Installing old_ftg script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.827804] (kuf1tenth) StdoutLine: {'line': b'Installing translate script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.827875] (kuf1tenth) StdoutLine: {'line': b'Installing wall_follow script to /home/j985y238/kuf1tenth/install/kuf1tenth/lib/kuf1tenth\n'}
+[0.828247] (kuf1tenth) StdoutLine: {'line': b"writing list of installed files to '/home/j985y238/kuf1tenth/build/kuf1tenth/install.log'\n"}
+[0.846244] (kuf1tenth) CommandEnded: {'returncode': 0}
+[0.859936] (kuf1tenth) JobEnded: {'identifier': 'kuf1tenth', 'rc': 0}
+[0.860594] (-) EventReactorShutdown: {}
