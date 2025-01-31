@@ -21,16 +21,16 @@ class FtgNode(Node):
         self.tolerance = 0.5
 
         #adapted parameters from BDEvan5 f1tenth benchmarks FTG implementation
-        self.bubble_radius = 320
+        self.bubble_radius = 300
         self.preprocess_conv_size = 3
         self.best_point_conv_size = 80
-        self.max_lidar_dist = 10.0
-        self.fast_speed = 6.5
-        self.straights_speed = 5.0
-        self.corners_speed = 1.5
-        self.straights_steering_angle = 0.174
-        self.fast_steering_angle = 0.0785
-        self.safe_threshold = 5
+        self.max_lidar_dist = 8.0
+        self.fast_speed = 8.0
+        self.straights_speed = 6.0
+        self.corners_speed = 2.0
+        self.straights_steering_angle = 0.174 
+        self.fast_steering_angle = 0.0785 #0.0785
+        self.safe_threshold = 8
         self.max_steer = 0.52
 
 
@@ -65,43 +65,6 @@ class FtgNode(Node):
 
         self.publish_ackermann_drive(speed, steering_angle)
 
-
-
-        # '''STEERING CALCULATION'''
-        # #process where the farthest point is, and then the farthest safe point
-        # #dead center is 540, each degree has 4 scans -- assume all measurements are in m
-        # target = self.safe_point(msg)
-        # unchecked_angle = self.point_to_steering(target)
-
-        # #check the angle to make sure the car is physically able to turn that far
-        # if -30 <= unchecked_angle <= 30:
-        #     steering_angle = unchecked_angle
-        # elif -30 > unchecked_angle:
-        #     steering_angle = -30
-        # else:
-        #     steering_angle = 30
-        
-        # # #safety check! if car is within .5 meters of the wall, steer away slightly to provent side collision
-        # if min(msg.ranges[120:220]) > car_width+tolerance and min(msg.ranges[760:840]) > car_width+tolerance:
-        #     pass
-        # elif min(msg.ranges[120:220]) <= car_width+tolerance and steering_angle < 0:
-        #     steering_angle = 0.75
-        # elif min(msg.ranges[760:840]) <= car_width+tolerance and steering_angle > 0:
-        #     steering_angle = -0.75
-        # '''SPEED CALCULATION'''
-
-        # #really need to improve this part. Hopefully a system that integrates turning angle + distance to lookahead
-        # # if steering_angle!=0 and mean(msg.ranges[520:560])*(0.9-steering_angle/100) < 8:
-        # #     speed = mean(msg.ranges[520:560])*(0.9-steering_angle/100)
-        # # else:
-        # #     speed = 8
-        # if msg.ranges[540]/2 >= 8:
-        #     speed = 8
-        # else:
-        #     speed = msg.ranges[540]/2
-        # self.get_logger().info(f'steering angle:{speed}')
-        # self.publish_ackermann_drive(speed, self.deg2rad(steering_angle))
-    
     def preprocess_lidar(self, ranges):
             """ Preprocess the LiDAR scan array. Expert implementation includes:
                 1.Setting each value to the mean over some window
@@ -143,8 +106,7 @@ class FtgNode(Node):
         """
         # do a sliding window average over the data in the max gap, this will
         # help the car to avoid hitting corners
-        averaged_max_gap = np.convolve(ranges[start_i:end_i], np.ones(self.best_point_conv_size),
-                                       'same') / self.best_point_conv_size
+        averaged_max_gap = np.convolve(ranges[start_i:end_i], np.ones(self.best_point_conv_size),'same') / self.best_point_conv_size
         return averaged_max_gap.argmax() + start_i
 
     def get_angle(self, range_index, range_len):
