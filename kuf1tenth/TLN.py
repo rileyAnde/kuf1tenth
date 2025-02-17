@@ -19,7 +19,7 @@ class TLNNode(Node):
         self.odom_subscription = self.create_subscription(Odometry, '/ego_racecar/odom', self.odom_callback, 10)
         self.get_logger().info('TLNNode has been started.')
 
-        self.model_path = "/home/r478a194/Downloads/f1_tenth_model_small_noquantized.tflite"
+        self.model_path = "src/kuf1tenth/kuf1tenth/models/f1_tenth_model_small_noquantized.tflite"
         self.interpreter = tf.lite.Interpreter(model_path=self.model_path)
         self.interpreter.allocate_tensors()
         self.input_index = self.interpreter.get_input_details()[0]["index"]
@@ -34,7 +34,8 @@ class TLNNode(Node):
         
         # Lap counter variables
         self.lap_count = 0
-        self.lap_time = time.time()
+        #get clock to record time
+        self.lap_time = self.get_clock().now()
 
         self.start_finish_line_x = 0.0  # Define the x-coordinate of the start/finish line
         self.previous_x_position = None  # To track the previous position of the car
@@ -68,14 +69,14 @@ class TLNNode(Node):
         speed = output[0, 1]
 
         min_speed = 0
-        max_speed = 8
+        max_speed = 10
         speed = self.linear_map(speed, 0, 1, min_speed, max_speed)
         
         self.speed_queue.append(speed)
 
         if self.detect_crash():
             self.get_logger().info("Crash")
-            self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
+            self.get_logger().info(f"Lap time: {(self.get_clock().now() - self.lap_time).nanoseconds / 1_000_000_000}")
             self.destroy_node()
             rclpy.shutdown()
             quit()
@@ -122,7 +123,7 @@ class TLNNode(Node):
         self.previous_x_position = current_position.x
     
         if self.lap_count == 1:
-            self.get_logger().info(f"Lap time: {time.time() - self.lap_time}")
+            self.get_logger().info(f"Lap time:{(self.get_clock().now() - self.lap_time).nanoseconds / 1_000_000_000}")
             self.destroy_node()
             quit()
     def detect_crash(self):
