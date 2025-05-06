@@ -32,7 +32,7 @@ class TLNRecorder(Node):
 
     def lidar_callback(self, msg):
         
-        lidar = np.array(msg.ranges)[::2]
+        lidar = np.array(msg.ranges)
 
         obs = lidar.astype(np.float32)
 
